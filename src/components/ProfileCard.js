@@ -9,7 +9,7 @@ const DEFAULT_LINKEDIN_IMAGE = linkedinLogo;
 
 const ProfileCard = ({ image, name, title, linkedinUrl, linkedinImage = DEFAULT_LINKEDIN_IMAGE }) => {
     return (
-        <div className="max-w-xs mx-auto bg-white shadow-lg rounded-lg overflow-hidden px-2">
+        <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden px-2">
             <div className="flex justify-center mt-4">
                 <img
                     className="w-24 h-24 rounded-full border-2 border-white shadow-md"

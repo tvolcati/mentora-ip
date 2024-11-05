@@ -5,6 +5,40 @@ import JonathanIMG from './assets/JonathanIMG.png';
 import ProfileCard from './components/ProfileCard';
 
 export default function App() {
+  const mentors = [
+    {
+      image: JonathanIMG,
+      name: "Aristóteles",
+      title: "Diretor de Churrasco at IP-SP",
+      linkedinUrl: "https://www.linkedin.com/in/aristoteles"
+    },
+    {
+      image: JonathanIMG,
+      name: "Aristóteles",
+      title: "Diretor de Churrasco at IP-SP",
+      linkedinUrl: "https://www.linkedin.com/in/aristoteles"
+    },
+    {
+      image: JonathanIMG,
+      name: "Aristóteles",
+      title: "Diretor de Churrasco at IP-SP",
+      linkedinUrl: "https://www.linkedin.com/in/aristoteles"
+    },
+    {
+      image: JonathanIMG,
+      name: "Aristóteles",
+      title: "Diretor de Churrasco at IP-SP",
+      linkedinUrl: "https://www.linkedin.com/in/aristoteles"
+    },
+    {
+      image: JonathanIMG,
+      name: "Aristóteles",
+      title: "Diretor de Churrasco at IP-SP",
+      linkedinUrl: "https://www.linkedin.com/in/aristoteles"
+    }
+
+  ];
+
   return (
     <div>
       <header className="w-full bg-white my-1 mx-1 flex justify-between shadow-md">
@@ -21,12 +55,38 @@ export default function App() {
       <div className="shadow-md">
         <h1 className='mx-4 text-3xl py-8' style={{color:"#6A6EA0"}}>Mentores:</h1>
       </div>
-      <ProfileCard 
-        image={JonathanIMG} 
-        name="Jonathan Doe" 
-        title="Senior Developer" 
-        linkedinUrl="https://www.linkedin.com/in/jonathandoe" 
-      />
+      
+      {/* Main Container */}
+      <div className="flex px-4 pb-8">
+        {/* Left Column with Filter and Divider Line */}
+        <div className="w-1/4 pr-4 border-r border-gray-300">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="filter">
+            Filtrar por:
+          </label>
+          <select id="filter" className="w-full p-2 border rounded shadow">
+            <option value="">Todos</option>
+            <option value="diretor">Diretores</option>
+            <option value="senior">Senior Developers</option>
+          </select>
+        </div>
+
+        {/* Right Column with Scrollable Mentor Cards in a Box */}
+        <div className="w-3/4 pl-4">
+          <div className="border border-gray-300 rounded-lg p-4 h-[500px] overflow-y-auto shadow-md">
+            <div className="grid grid-cols-2 gap-4">
+              {mentors.map((mentor, index) => (
+                <ProfileCard 
+                  key={index}
+                  image={mentor.image} 
+                  name={mentor.name} 
+                  title={mentor.title} 
+                  linkedinUrl={mentor.linkedinUrl} 
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
