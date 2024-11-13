@@ -9,17 +9,19 @@ const DEFAULT_LINKEDIN_IMAGE = linkedinLogo;
 
 const ProfileCard = ({ image, name, title, linkedinUrl, linkedinImage = DEFAULT_LINKEDIN_IMAGE }) => {
     return (
-        <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden px-2">
-            <div className="flex justify-center mt-4">
-                <img
-                    className="w-24 h-24 rounded-full border-2 border-white shadow-md"
-                    src={image}
-                    alt={name}
-                />
-            </div>
-            <div className="text-center mt-4">
-                <h2 className="text-xl font-semibold text-gray-800">{name}</h2>
-                <p className="text-gray-600">{title}</p>
+        <div className="min-w-96 mx-auto bg-white shadow-lg rounded-lg overflow-hidden px-2 flex flex-col justify-between h-full">
+            <div>
+                <div className="flex justify-center mt-4">
+                    <img
+                        className="w-24 h-24 rounded-full border-2 border-white shadow-md"
+                        src={image}
+                        alt={name}
+                    />
+                </div>
+                <div className="text-center mt-4">
+                    <h2 className="text-xl font-semibold text-gray-800">{name}</h2>
+                    <p className="text-gray-600">{title}</p>
+                </div>
             </div>
             <div className="flex justify-center mt-4 mb-4">
                 <a

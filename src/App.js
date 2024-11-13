@@ -1,9 +1,12 @@
+import React, { useState } from 'react';
 import './index.css';
 import logo from './assets/logo.svg';
-import heroIMG from './assets/heroIMG_7.png';
+import heroIMG from './assets/heroIMG_8.png';
 import ProfileCard from './components/ProfileCard';
 import InfoCard from './components/InfoCard';
-import { FaPhone, FaCalendarAlt, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaPhone, FaCalendarAlt, FaClock, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa';
+import universitarios from './assets/universitarios.png';
+import universitarios_placas from './assets/universitarios_placas.png';
 
 // import dos mentores
 import AndreFortuna from './assets/André_Fortuna.jpeg';
@@ -29,13 +32,14 @@ import SamilaSantana from './assets/Samila_Santana.jpeg'
 import ThaisTebaldi from './assets/Thais_Tebaldi_Caser.jpg'
 import VaniaGoulart from './assets/Vânia_Goulart.jpg'
 
-
 export default function App() {
+  const [selectedArea, setSelectedArea] = useState('');
+
   const mentors = [
     {
       image: AndreFortuna,
       name: "André Fortuna",
-      title: "Negocio - Tecnologia",
+      title: "Negócios - Tecnologia",
       linkedinUrl: "https://www.linkedin.com/in/aristoteles"
     },
     {
@@ -43,7 +47,6 @@ export default function App() {
       name: "André Nahas",
       title: "Empreendedorismo",
       linkedinUrl: "https://www.linkedin.com/in/andrenahas/?original_referer=https%3A%2F%2Fwww%2Egoogle%2Ecom%2F&originalSubdomain=br"
-
     },
     {
       image: CamilaGiuberti,
@@ -54,7 +57,7 @@ export default function App() {
     {
       image: DanielLopes,
       name: "Daniel Lopes",
-      title: "Negocio - Tecnologia",
+      title: "Negócios - Tecnologia",
       linkedinUrl: "https://www.linkedin.com/in/almeidalopes/"
     },
     {
@@ -161,21 +164,34 @@ export default function App() {
     },
   ];
 
+  const filteredMentors = selectedArea
+    ? mentors.filter(mentor => {
+        if (selectedArea === "Negócios") {
+          return ["Negócios", "Operações", "Empreendedorismo", "Consultoria"].some(area => mentor.title.includes(area));
+        } else if (selectedArea === "Saúde") {
+          return ["Farmácia", "Medicina", "Nutrição"].some(area => mentor.title.includes(area));
+        } else {
+          return mentor.title.includes(selectedArea);
+        }
+      })
+    : mentors;
+
   return (
     <div>
       {/* Header */}
-      <header className="w-full bg-white my-1 mx-1 flex justify-between shadow-md">
+      <header className="w-full bg-white py-3 mx-1 flex justify-between shadow-md">
         <img src={logo} alt="" className="items-start max-w-40" />
         <div className="flex items-center">
           <a href="https://www.institutoponte.org.br" className="mr-4" style={{ color: '#6A6EA0' }}>Sobre</a>
-          <h1 className="mr-8" style={{ color: '#6A6EA0' }}>Mentores</h1>
+          <a href="#mentores" className="mr-8" style={{ color: '#6A6EA0' }}>Mentores</a>
         </div>
       </header>
 
       <div className="relative">
         <img src={heroIMG} alt="" className="w-full" />
-        <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 text-white text-center text-4xl	 font-bold	">
-          <h1>Conheça a Mentoria do Instituto Ponte</h1>
+        <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 text-white text-center text-4xl font-bold">
+          <h1>Programa de Mentoria universitária</h1>
+          <h2 className="text-lg font-thin">Nosso propósito é ser a ponte para a ascensão social em uma geração, por meio da educação de qualidade, para jovens em vulnerabilidade social. Temos 365 alunos apoiados com 102 já na universidade.</h2>
         </div>
         <div className="absolute top-5/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[85%] grid grid-cols-4 gap-4">
           <InfoCard 
@@ -211,42 +227,78 @@ export default function App() {
           />
         </div>
       </div>
-      {/* Text Section
-      <div className="text-center py-6 px-6 text-sm" style={{ backgroundColor: '#6A6EA0', marginTop: '60px' }}>
-        <h1><b>O programa de mentoria do Instituto Ponte faz parte do programa de formação e desenvolvimento dos alunos do Ensino Superior. A mentoria tem o objetivo de conectar o universitário com um profissional do mercado de trabalho de áreas correlatas que como mentor possa trazer suas experiências e perspectivas sobre a carreira e a atuação nessa área. Buscando assim, que o aluno se sinta mais preparado para o mercado e que tenha boas referências e inspirações para sua trajetória profissional.</b></h1>
-      </div> */}
-
-      {/* Mentor List Section */}
-      <div className="shadow-md">
-        <h1 className='mx-4 text-3xl py-8' style={{ color: "#6A6EA0" }}>Mentores:</h1>
+      <div className="pt-36" style={{backgroundColor: "#6A6EA0"}}>
+        <div className="w-[80%] mx-auto my-8">
+          <img alt='' src={universitarios} className="block mx-auto" />
+        </div>
       </div>
 
-      <div className="flex px-4 pb-8">
-        <div className="w-1/4 pr-4 border-r border-gray-300">
+      <div id="mentores" className="px-6 pb-4 text-2xl font-semibold shadow-md" style={{ color: '#6A6EA0' }}>Mentores:</div>
+      <div className="flex flex-col md:flex-row px-4 py-8">
+        {/* Left Column with Filter and Divider Line */}
+        <div className="w-full md:w-1/4 pr-4 border-r border-gray-300 mb-4 md:mb-0">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="filter">
-            Filtrar por:
+            Filtrar por área:
           </label>
-          <select id="filter" className="w-full p-2 border rounded shadow">
+          <select 
+            id="filter" 
+            className="w-full p-2 border rounded shadow"
+            value={selectedArea}
+            onChange={(e) => setSelectedArea(e.target.value)}
+          >
             <option value="">Todos</option>
-            <option value="diretor">Diretores</option>
-            <option value="senior">Senior Developers</option>
+            <option value="Negócios">Negócios</option>
+            <option value="Tecnologia">Tecnologia</option>
+            <option value="Mercado Financeiro">Mercado Financeiro</option>
+            <option value="Recursos Humanos">Gestão de Pessoas</option>
+            <option value="Saúde">Saúde</option>
+            <option value="Arquitetura">Arquitetura</option>
           </select>
         </div>
 
-        <div className="w-3/4 pl-4">
-          <div className="border border-gray-300 rounded-lg p-4 h-[500px] overflow-y-auto shadow-md">
-            <div className="grid grid-cols-2 gap-4">
-              {mentors.map((mentor, index) => (
-                <ProfileCard
+        {/* Right Column with Scrollable Mentor Cards in a Box */}
+        <div className="w-full md:w-3/4 pl-0 md:pl-4">
+          <div className="border border-gray-300 rounded-lg p-4 h-[500px] overflow-y-auto shadow-md custom-scrollbar background-image">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {filteredMentors.map((mentor, index) => (
+                <ProfileCard 
                   key={index}
-                  image={mentor.image}
-                  name={mentor.name}
-                  title={mentor.title}
-                  linkedinUrl={mentor.linkedinUrl}
+                  image={mentor.image} 
+                  name={mentor.name} 
+                  title={mentor.title} 
+                  linkedinUrl={mentor.linkedinUrl} 
                 />
               ))}
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="mentor-invitation-container flex flex-col md:flex-row w-full h-[400px]">
+        {/* Left section for the image */}
+        <div className="image-section w-full md:w-2/3 h-full">
+          <img 
+            src={universitarios_placas} 
+            alt="Mentorship Event"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Right section for the text */}
+        <div className="text-section w-full md:w-1/3 bg-gray-200 flex flex-col justify-center items-start p-8">
+          <h2 className="text-3xl font-bold text-blue-800 mb-4">
+            Seja mentor você também
+          </h2>
+          <p className="text-lg text-blue-800 mb-6">
+            Faça parte da ponte para o sucesso destes alunos
+          </p>
+          <button 
+            className="flex items-center bg-white text-green-700 border-2 border-green-500 rounded-md px-4 py-2"
+            onClick={() => window.open("https://wa.me/5511978976926")}
+          >
+            <FaWhatsapp className="w-6 h-6 mr-2" />
+            Fale conosco
+          </button>
         </div>
       </div>
     </div>
