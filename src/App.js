@@ -4,7 +4,7 @@ import logo from './assets/logo.svg';
 import heroIMG from './assets/heroIMG_8.png';
 import ProfileCard from './components/ProfileCard';
 import InfoCard from './components/InfoCard';
-import { FaPhone, FaCalendarAlt, FaClock, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa';
+import { FaPhone, FaCalendarAlt, FaClock, FaMapMarkerAlt, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 import universitarios from './assets/universitarios.png';
 import universitarios_placas from './assets/universitarios_placas.png';
 
@@ -294,11 +294,19 @@ export default function App() {
           </p>
           <button 
             className="flex items-center bg-white text-green-700 border-2 border-green-500 rounded-md px-4 py-2"
-            onClick={() => window.open("https://wa.me/5511978976926")}
+            onClick={() => window.open("https://wa.me/552722336363")}
           >
             <FaWhatsapp className="w-6 h-6 mr-2" />
             Fale conosco
           </button>
+          <button 
+            className="flex items-center bg-white text-blue-700 border-2 border-blue-500 rounded-md px-4 py-2 mt-2"
+            onClick={() => window.location.href = "mailto:contato@institutoponte.org.br"}
+          >
+            <FaEnvelope className="w-6 h-6 mr-2 pr-2" />
+               ponte@institutoponte.org.br
+          </button>
+      
         </div>
       </div>
     </div>
