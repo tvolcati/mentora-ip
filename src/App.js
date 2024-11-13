@@ -195,33 +195,31 @@ export default function App() {
         </div>
         <div className="absolute top-5/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[85%] grid grid-cols-4 gap-4">
           <InfoCard 
-            icon={<FaPhone />}
-            title="Emergency Cases"
-            description="Please feel welcome to contact our staff with any general or medical enquiry call us"
-            additionalContent={<p className="text-2xl font-bold">0106123214</p>}
+            icon={< FaCalendarAlt/>}
+            title="Agenda de encontros"
+            description="Esses são os textos: eMentoria com um ou dois universitários do Instituto Ponte, durante 1 ano."
             color="#FFFFFF"
             textColor={"#EBB458"}
           />
           <InfoCard 
-            icon={<FaCalendarAlt />}
-            title="Doctors Timetable"
-            description="Qualified doctors available six days a week, view our timetable to make an appointment."
-            additionalContent={<button className="bg-white text-blue-700 py-2 px-4 rounded">View Timetable</button>}
+            icon={<FaClock />}
+            title="Apoio aos alunos"
+            description="Um encontro mensal por mês com o aluno para apoiar sua preparação para o mercado de trabalho e transmitir seus conhecimentos sobre sua área de atuação."
             color="#EBB458"
             textColor={"#FFFFFF"}
           />
           <InfoCard 
-            icon={<FaClock />}
-            title="Opening Hours"
-            description="Monday-Friday: 8:00 - 7:00 PM\nSaturday: 9:00 - 8:00 PM\nSunday: 10:00 - 9:00 PM\nEmergency: 24HR / 7DAYS"
+            icon={<FaMapMarkerAlt />}
+            title="Inspiração"
+            description="Estimular o aluno na busca por conhecimentos e oportunidades que o ajudem em sua futura carreira."
             color="#FFFFFF"
             textColor={"#EBB458"}
           />
           <InfoCard 
-            icon={<FaMapMarkerAlt />}
-            title="Location, Directions"
-            description="2307 Beverley Rd Brooklyn, New York 11226 United States."
-            additionalContent={<img src="/path/to/map_image.png" alt="Map" className="w-24 h-24 mt-4" />}
+            icon={<FaPhone />}
+            title="Inscreva-se"
+            description="Torne-se um mentor, para participar basta entrar em contato com nosso WhatsApp."
+            additionalContent={<p className="text-2xl font-bold">+55(27)2233-6363</p>}
             color="#EBB458"
             textColor={"#FFFFFF"}
           />
