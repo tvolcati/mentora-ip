@@ -1,7 +1,9 @@
 import './index.css';
 import logo from './assets/logo.svg';
-import heroIMG from './assets/heroIMG.png';
+import heroIMG from './assets/heroIMG_7.png';
 import ProfileCard from './components/ProfileCard';
+import InfoCard from './components/InfoCard';
+import { FaPhone, FaCalendarAlt, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 
 // import dos mentores
 import AndreFortuna from './assets/André_Fortuna.jpeg';
@@ -161,24 +163,65 @@ export default function App() {
 
   return (
     <div>
+      {/* Header */}
       <header className="w-full bg-white my-1 mx-1 flex justify-between shadow-md">
-        <img src={logo} className="items-start max-w-40"/>
+        <img src={logo} alt="" className="items-start max-w-40" />
         <div className="flex items-center">
-            <a href="https://www.institutoponte.org.br" className="mr-4" style={{ color: '#6A6EA0' }}>Sobre</a>
-            <h1 className="mr-8" style={{ color: '#6A6EA0' }}>Mentores</h1>
+          <a href="https://www.institutoponte.org.br" className="mr-4" style={{ color: '#6A6EA0' }}>Sobre</a>
+          <h1 className="mr-8" style={{ color: '#6A6EA0' }}>Mentores</h1>
         </div>
       </header>
-      <img src={heroIMG} className="w-full"/>
-      <div className="text-center py-6 px-6 text-sm" style={{ backgroundColor: '#6A6EA0' }}>
+
+      <div className="relative">
+        <img src={heroIMG} alt="" className="w-full" />
+        <div className="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 text-white text-center text-4xl	 font-bold	">
+          <h1>Conheça a Mentoria do Instituto Ponte</h1>
+        </div>
+        <div className="absolute top-5/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[85%] grid grid-cols-4 gap-4">
+          <InfoCard 
+            icon={<FaPhone />}
+            title="Emergency Cases"
+            description="Please feel welcome to contact our staff with any general or medical enquiry call us"
+            additionalContent={<p className="text-2xl font-bold">0106123214</p>}
+            color="#FFFFFF"
+            textColor={"#EBB458"}
+          />
+          <InfoCard 
+            icon={<FaCalendarAlt />}
+            title="Doctors Timetable"
+            description="Qualified doctors available six days a week, view our timetable to make an appointment."
+            additionalContent={<button className="bg-white text-blue-700 py-2 px-4 rounded">View Timetable</button>}
+            color="#EBB458"
+            textColor={"#FFFFFF"}
+          />
+          <InfoCard 
+            icon={<FaClock />}
+            title="Opening Hours"
+            description="Monday-Friday: 8:00 - 7:00 PM\nSaturday: 9:00 - 8:00 PM\nSunday: 10:00 - 9:00 PM\nEmergency: 24HR / 7DAYS"
+            color="#FFFFFF"
+            textColor={"#EBB458"}
+          />
+          <InfoCard 
+            icon={<FaMapMarkerAlt />}
+            title="Location, Directions"
+            description="2307 Beverley Rd Brooklyn, New York 11226 United States."
+            additionalContent={<img src="/path/to/map_image.png" alt="Map" className="w-24 h-24 mt-4" />}
+            color="#EBB458"
+            textColor={"#FFFFFF"}
+          />
+        </div>
+      </div>
+      {/* Text Section
+      <div className="text-center py-6 px-6 text-sm" style={{ backgroundColor: '#6A6EA0', marginTop: '60px' }}>
         <h1><b>O programa de mentoria do Instituto Ponte faz parte do programa de formação e desenvolvimento dos alunos do Ensino Superior. A mentoria tem o objetivo de conectar o universitário com um profissional do mercado de trabalho de áreas correlatas que como mentor possa trazer suas experiências e perspectivas sobre a carreira e a atuação nessa área. Buscando assim, que o aluno se sinta mais preparado para o mercado e que tenha boas referências e inspirações para sua trajetória profissional.</b></h1>
-      </div>
+      </div> */}
+
+      {/* Mentor List Section */}
       <div className="shadow-md">
-        <h1 className='mx-4 text-3xl py-8' style={{color:"#6A6EA0"}}>Mentores:</h1>
+        <h1 className='mx-4 text-3xl py-8' style={{ color: "#6A6EA0" }}>Mentores:</h1>
       </div>
-      
-      {/* Main Container */}
+
       <div className="flex px-4 pb-8">
-        {/* Left Column with Filter and Divider Line */}
         <div className="w-1/4 pr-4 border-r border-gray-300">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="filter">
             Filtrar por:
@@ -190,17 +233,16 @@ export default function App() {
           </select>
         </div>
 
-        {/* Right Column with Scrollable Mentor Cards in a Box */}
         <div className="w-3/4 pl-4">
           <div className="border border-gray-300 rounded-lg p-4 h-[500px] overflow-y-auto shadow-md">
             <div className="grid grid-cols-2 gap-4">
               {mentors.map((mentor, index) => (
-                <ProfileCard 
+                <ProfileCard
                   key={index}
-                  image={mentor.image} 
-                  name={mentor.name} 
-                  title={mentor.title} 
-                  linkedinUrl={mentor.linkedinUrl} 
+                  image={mentor.image}
+                  name={mentor.name}
+                  title={mentor.title}
+                  linkedinUrl={mentor.linkedinUrl}
                 />
               ))}
             </div>
