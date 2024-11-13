@@ -197,14 +197,14 @@ export default function App() {
           <InfoCard 
             icon={< FaCalendarAlt/>}
             title="Agenda de encontros"
-            description="Esses são os textos: eMentoria com um ou dois universitários do Instituto Ponte, durante 1 ano."
+            description="Mentoria com um ou dois universitários do Instituto Ponte, durante 1 ano."
             color="#FFFFFF"
             textColor={"#EBB458"}
           />
           <InfoCard 
             icon={<FaClock />}
             title="Apoio aos alunos"
-            description="Um encontro mensal por mês com o aluno para apoiar sua preparação para o mercado de trabalho e transmitir seus conhecimentos sobre sua área de atuação."
+            description="Um encontro por mês com o aluno para apoiar sua preparação para o mercado de trabalho e transmitir seus conhecimentos sobre sua área de atuação."
             color="#EBB458"
             textColor={"#FFFFFF"}
           />
@@ -219,7 +219,7 @@ export default function App() {
             icon={<FaPhone />}
             title="Inscreva-se"
             description="Torne-se um mentor, para participar basta entrar em contato com nosso WhatsApp."
-            additionalContent={<p className="text-2xl font-bold">+55(27)2233-6363</p>}
+            additionalContent={<p className="text-2xl font-bold">(27)2233-6363</p>}
             color="#EBB458"
             textColor={"#FFFFFF"}
           />
